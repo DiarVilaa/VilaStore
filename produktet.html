@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-commerce Website</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="logo">VILA STORE</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="produktet.html">Produktet</a></li>
+                <li><a href="cart.html">Cart</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <section class="hero">
+            <h1>Welcome to VILA STORE</h1>
+            <p>Find your favorite products here!</p>
+        </section>
+        <section class="product-grid">
+            <div class="product">
+                <img src="https://c.shld.net/rpx/i/s/i/spin/10130172/prod_18899955412??hei=64&wid=64&qlt=50" width="25%">
+                <h3>Gaming PC</h3>
+                <p>$1000.00</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+            <div class="product">
+                <img src="https://th.bing.com/th/id/OIP.cesLJ953N-GkZjOfJAqhJAHaGi?rs=1&pid=ImgDetMain" width="25%">
+                <h3>Logitech Mouse</h3>
+                <p>$100.00</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+            <div class="product">
+                <img src="https://static.digit.in/default/tr:w-2048/hyperx-1280-6ecd97cc18.png" width="25%">
+                <h3>HyperX Cloud 3</h3>
+                <p>$110.00</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+            <div class="product">
+                <img src="https://www.hartware.de/wp-content/uploads/2009/05/121.jpg" width="25%">
+                <h3>Logitech Keyboard</h3>
+                <p>$60.00</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+            <div class="product">
+                <img src="https://th.bing.com/th/id/OIP.si9KgDTmGBIxhmcoCy1y3AHaHa?rs=1&pid=ImgDetMain" width="25%">
+                <h3>Logitech Chair</h3>
+                <p>$50.00</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+            <div class="product">
+                <img src="https://th.bing.com/th/id/OIP.ybKtVKJxRbOdjm0GZkGnGgHaHa?rs=1&pid=ImgDetMain" width="25%">
+                <h3>Gaming Table</h3>
+                <p>$400.00</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+        </section>
+    </main>
+    
+    <footer class="bg-dark text-white py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>Contact Information</h5>
+                    <p><strong>Email:</strong> support@vilastore.com</p>
+                    <p><strong>Phone:</strong> +1 234 567 890</p>
+                    <p><strong>Online Store:</strong> <a href="https://vilastore.netlify.app" class="text-white">https://vilastore.netlify.app</a></p>
+                </div>
+                <div class="col-md-6">
+                    <h5>Follow Us</h5>
+                    <div class="d-flex">
+                        <a href="https://www.facebook.com" class="text-white me-3"><i class="bi bi-facebook"></i> Facebook</a>
+                        <a href="https://www.instagram.com" class="text-white me-3"><i class="bi bi-instagram"></i> Instagram</a>
+                        <a href="https://www.twitter.com" class="text-white me-3"><i class="bi bi-twitter"></i> Twitter</a>
+                        <a href="https://www.linkedin.com" class="text-white"><i class="bi bi-linkedin"></i> LinkedIn</a>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-4" />
+            <p class="text-center mb-0">&copy; 2024 VilaStore. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+    const cart = [];
+
+    const addToCartButtons = document.querySelectorAll(".add-to-cart");
+    addToCartButtons.forEach(button => {
+        button.addEventListener("click", (e) => {
+            const product = e.target.parentElement;
+            const productName = product.querySelector("h3").innerText;
+            const productPrice = product.querySelector("p").innerText;
+            
+            cart.push({ name: productName, price: productPrice });
+            alert(`${productName} added to cart!`);
+        });
+    });
+
+    console.log(cart);
+});
+
+    </script>
+</body>
+</html>

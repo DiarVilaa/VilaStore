@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="logo">Vila Store</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="produktet.html">Produktet</a></li>
+                <li><a href="cart.html">Cart</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Our Products</h1>
+        <section class="product-grid">
+            <div class="product">
+                <img src="https://c.shld.net/rpx/i/s/i/spin/10130172/prod_18899955412??hei=64&wid=64&qlt=50" width="25%">
+                <h3>Gaming PC</h3>
+                <p>$1000.00</p>
+                <button class="add-to-cart" data-name="Gaming PC" data-price="1000.00">Add to Cart</button>
+            </div>
+            <div class="product">
+                <img src="https://th.bing.com/th/id/OIP.cesLJ953N-GkZjOfJAqhJAHaGi?rs=1&pid=ImgDetMain" width="25%">
+                <h3>Logitech Mouse</h3>
+                <p>$100.00</p>
+                <button class="add-to-cart" data-name="Logitech Mouse" data-price="100.00">Add to Cart</button>
+            </div>
+            <div class="product">
+                <img src="https://static.digit.in/default/tr:w-2048/hyperx-1280-6ecd97cc18.png" width="25%">
+                <h3>HyperX Cloud 3</h3>
+                <p>$110.00</p>
+                <button class="add-to-cart" data-name="HyperX Cloud 3" data-price="110.00">Add to Cart</button>
+            </div>
+        </section>
+
+        <h1>Your Shopping Cart</h1>
+        <section class="cart-items">
+        </section>
+        <div class="cart-summary">
+            <h3>Total: <span id="total-price">$0.00</span></h3>
+            <button class="checkout">Checkout</button>
+        </div>
+    </main>
+
+    <footer class="bg-dark text-white py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>Contact Information</h5>
+                    <p><strong>Email:</strong> support@vilastore.com</p>
+                    <p><strong>Phone:</strong> +1 234 567 890</p>
+                    <p><strong>Online Store:</strong> <a href="https://vilastore.netlify.app" class="text-white">https://vilastore.netlify.app</a></p>
+                </div>
+                <div class="col-md-6">
+                    <h5>Follow Us</h5>
+                    <div class="d-flex">
+                        <a href="https://www.facebook.com" class="text-white me-3"><i class="bi bi-facebook"></i> Facebook</a>
+                        <a href="https://www.instagram.com" class="text-white me-3"><i class="bi bi-instagram"></i> Instagram</a>
+                        <a href="https://www.twitter.com" class="text-white me-3"><i class="bi bi-twitter"></i> Twitter</a>
+                        <a href="https://www.linkedin.com" class="text-white"><i class="bi bi-linkedin"></i> LinkedIn</a>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-4" />
+            <p class="text-center mb-0">&copy; 2024 VilaStore. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const cartItemsContainer = document.querySelector(".cart-items");
+            const totalPriceElement = document.getElementById("total-price");
+
+            let cart = [];
+
+            function renderCart() {
+                cartItemsContainer.innerHTML = "";
+                let total = 0;
+
+                cart.forEach((item, index) => {
+                    const cartItem = document.createElement("div");
+                    cartItem.classList.add("cart-item");
+                    cartItem.innerHTML = `
+                        <p>${item.name}</p>
+                        <p>Price: $${item.price}</p>
+                        <button class="remove-item" data-index="${index}">Remove</button>
+                    `;
+                    cartItemsContainer.appendChild(cartItem);
+                    total += parseFloat(item.price);
+                });
+
+                totalPriceElement.innerText = `$${total.toFixed(2)}`;
+            }
+
+            const addToCartButtons = document.querySelectorAll(".add-to-cart");
+            addToCartButtons.forEach(button => {
+                button.addEventListener("click", () => {
+                    const productName = button.getAttribute("data-name");
+                    const productPrice = button.getAttribute("data-price");
+
+                    cart.push({ name: productName, price: productPrice });
+                    renderCart();
+                });
+            });
+
+            cartItemsContainer.addEventListener("click", (e) => {
+                if (e.target.classList.contains("remove-item")) {
+                    const index = e.target.getAttribute("data-index");
+                    cart.splice(index, 1);
+                    renderCart();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
